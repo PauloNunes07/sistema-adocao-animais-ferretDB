@@ -1,6 +1,7 @@
 package org.model;
 
 import org.bson.codecs.pojo.annotations.BsonId;
+import org.util.enums.TipoSexo;
 import org.util.enums.StatusAnimal;
 
 public class Animal {
@@ -10,14 +11,14 @@ public class Animal {
     private String nome;
     private String raca;
     private int idade;
-    private String sexo;
+    private TipoSexo sexo;
     private String descricaoSaude;
     private String porte;
     private StatusAnimal statusAnimal;
 
     public Animal(){}
 
-    public Animal(String nome, String raca, int idade, String sexo, String descricaoSaude, String porte, StatusAnimal statusAnimal) {
+    public Animal(String nome, String raca, int idade, TipoSexo sexo, String descricaoSaude, String porte, StatusAnimal statusAnimal) {
         this.nome = nome;
         this.raca = raca;
         this.idade = idade;
@@ -67,11 +68,11 @@ public class Animal {
         this.descricaoSaude = descricaoSaude;
     }
 
-    public String getSexo() {
+    public TipoSexo getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(TipoSexo sexo) {
         this.sexo = sexo;
     }
 
