@@ -15,23 +15,16 @@ public class ConfiguracaoFerretDB {
 
     private static final String nomeBanco = "adocao_animais";
 
-    private static final CodecRegistry CODECS =
-            CodecRegistries.fromRegistries(
+    private static final CodecRegistry CODECS = CodecRegistries.fromRegistries(
                     MongoClientSettings.getDefaultCodecRegistry(),
-                    CodecRegistries.fromProviders(
-                            PojoCodecProvider.builder()
-                                    .automatic(true)
-                                    .build()
-                    )
-            );
+                    CodecRegistries.fromProviders(PojoCodecProvider.builder()
+                                    .automatic(true).build()));
 
     private static final MongoClient CLIENTE =
             MongoClients.create(
                     MongoClientSettings.builder()
                             .applyConnectionString(
-                                    new com.mongodb.ConnectionString(URI)
-                            )
-                            .codecRegistry(CODECS)
+                                    new com.mongodb.ConnectionString(URI)).codecRegistry(CODECS)
                             .build()
             );
 
