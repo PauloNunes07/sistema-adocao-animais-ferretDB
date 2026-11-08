@@ -3,7 +3,7 @@ package org.repository;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import org.config.ConfiguracaoFerretDB;
-import org.model.Adotante;
+import org.util.GeradorId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,5 +35,14 @@ public class BaseRepository<T> {
         colecao.replaceOne(Filters.eq("_id", id), objeto);
     }
 
+    protected String gerarIdUnico(T objeto, int tamanho) {
+        while (true) {
+            String id = GeradorId.gerar(tamanho);
+            if (buscarPorId(id) == null) {
+                salvar(objeto);
+                return id;
+            }
+        }
+    }
 
 }
