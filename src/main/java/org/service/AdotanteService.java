@@ -38,7 +38,7 @@ public class AdotanteService {
     public Adotante buscarAdotantePorNome(String nome) {
         Validator.validarApenasLetras(nome, "nome");
 
-        Adotante adotante = adotanteRepository.buscarPorNome(nome.trim());
+        Adotante adotante = adotanteRepository.buscarPorNome(nome.toLowerCase().trim());
         AdotanteValidator.validarAdotanteEncontrado(adotante);
 
         return adotante;
@@ -51,8 +51,7 @@ public class AdotanteService {
 
     public Adotante buscarAdotantePorId(String id) {
 
-        Validator.validarString(id, "ID");
-
+        Validator.validarId(id);
         Adotante adotante = adotanteRepository.buscarPorId(id);
 
         AdotanteValidator.validarAdotanteEncontrado(adotante);
@@ -60,9 +59,32 @@ public class AdotanteService {
         return adotante;
     }
 
+    public void atualizarAdotante(String id, Adotante adotante) {
+
+        Validator.validarId(id);
+        Validator.validarObjeto(adotante, "adotante");
+
+        buscarAdotantePorId(id);
+
+        Validator.validarApenasLetras(adotante.getNome(), "nome");
+
+        AdotanteValidator.validarContato(adotante.getContato());
+        AdotanteValidator.validarEndereco(adotante.getContato().getEndereco());
+
+        Adotante encontrado = adotanteRepository.buscarPorEmail(adotante.getContato().getEmail());
+
+        if (encontrado != null && !encontrado.getId().equals(id)) {
+            throw new CampoInvalidoException("Já existe outro adotante cadastrado com esse e-mail.");
+        }
+
+        adotante.setId(id);
+
+        adotanteRepository.atualizar(id, adotante);
+    }
+
     public void removerAdotante(String id) {
 
-        Validator.validarString(id, "ID");
+        Validator.validarId(id);
 
         buscarAdotantePorId(id);
 

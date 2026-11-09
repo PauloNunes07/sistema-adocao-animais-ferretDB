@@ -55,7 +55,7 @@ public class AnimalService {
 
     public Animal buscarAnimalPorId(String id) {
 
-        Validator.validarString(id, "ID");
+        Validator.validarId(id);
 
         Animal animal = animalRepository.buscarPorId(id);
 
@@ -67,12 +67,10 @@ public class AnimalService {
 
     public void atualizarAnimal(String id, Animal animal) {
 
-        Validator.validarString(id, "ID");
+        Validator.validarId(id);
         Validator.validarObjeto(animal, "animal");
 
-
         buscarAnimalPorId(id);
-
 
         Validator.validarApenasLetras(animal.getNome(), "nome");
         Validator.validarApenasLetras(animal.getRaca(), "raça");
@@ -90,8 +88,7 @@ public class AnimalService {
 
     public void removerAnimal(String id) {
 
-        Validator.validarString(id, "ID");
-
+        Validator.validarId(id);
 
         buscarAnimalPorId(id);
 

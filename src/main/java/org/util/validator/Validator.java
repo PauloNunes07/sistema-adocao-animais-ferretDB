@@ -13,6 +13,22 @@ public class Validator {
         }
     }
 
+    public static void validarId(String id) {
+        validarString(id, "ID");
+
+        if (id.matches(".*[^a-zA-Z0-9].*")) {
+            throw new CampoInvalidoException("O ID não pode possuir caracteres especiais.");
+        }
+
+        if (!id.matches(".*[a-zA-Z].*") || !id.matches(".*\\d.*")) {
+            throw new CampoInvalidoException("O ID deve possuir letras e números.");
+        }
+
+        if (id.length() != 10) {
+            throw new CampoInvalidoException("O ID deve possuir exatamente 10 caracteres.");
+        }
+    }
+
     public static void validarString(String texto, String campo) {
 
         if (texto == null) {

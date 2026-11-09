@@ -25,6 +25,7 @@ public class AdotanteView {
             System.out.println("3 - Buscar por ID");
             System.out.println("4 - Buscar por nome");
             System.out.println("5 - Remover adotante");
+            System.out.println("6 - Atualizar adotante");
             System.out.println("0 - Voltar");
 
             opcao = input.lerInteiro("Escolha uma opção: ");
@@ -44,6 +45,9 @@ public class AdotanteView {
                     break;
                 case 5:
                     removerAdotante();
+                    break;
+                case 6:
+                    atualizarAdotante();
                     break;
                 case 0:
                     break;
@@ -100,6 +104,34 @@ public class AdotanteView {
         if (adotante != null) {
             exibirAdotante(adotante);
         }
+    }
+
+    private void atualizarAdotante() {
+        System.out.println("\n--- ATUALIZAR ADOTANTE ---");
+
+        String id = input.lerTexto("ID do adotante: ").trim();
+
+        Adotante adotante = adotanteController.buscarAdotantePorId(id);
+
+        if (adotante == null) {
+            return;
+        }
+
+        System.out.println("\nDados atuais:");
+        exibirAdotante(adotante);
+
+        System.out.println("\nInforme os novos dados:");
+
+        String nome = input.lerTexto("Novo nome: ").trim();
+        String email = input.lerTexto("Novo e-mail: ").trim();
+        String telefone = input.lerTexto("Novo telefone: ").trim();
+        String endereco = input.lerTexto("Novo endereço: ").trim();
+
+        Contato contato = new Contato(email, telefone, endereco);
+
+        Adotante adotanteAtualizado = new Adotante(nome, contato);
+
+        adotanteController.atualizarAdotante(id, adotanteAtualizado);
     }
 
     private void exibirAdotante(Adotante adotante) {

@@ -50,6 +50,16 @@ public class AdotanteController {
         }
     }
 
+    public void atualizarAdotante(String id, Adotante adotante) {
+        try {
+            adotanteService.atualizarAdotante(id, adotante);
+            System.out.println("Adotante atualizado com sucesso!");
+
+        } catch (Exception e) {
+            GlobalExceptionHandler.tratar(e);
+        }
+    }
+
     public void removerAdotante(String id) {
         try {
             adotanteService.removerAdotante(id);

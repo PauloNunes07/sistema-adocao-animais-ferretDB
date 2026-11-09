@@ -56,8 +56,7 @@ public class AdocaoService {
     }
 
     public Adocao buscarAdocaoPorId(String id) {
-        Validator.validarString(id, "ID");
-
+        Validator.validarId(id);
         Adocao adocao = adocaoRepository.buscarPorId(id);
         AdocaoValidator.validarAdocaoEncontrada(adocao);
 
@@ -65,6 +64,7 @@ public class AdocaoService {
     }
 
     public void aprovarAdocao(String id) {
+        Validator.validarId(id);
         Adocao adocao = buscarAdocaoPorId(id);
 
         if (adocao.getStatusAdocao() != StatusAdocao.PENDENTE) {
@@ -84,6 +84,7 @@ public class AdocaoService {
     }
 
     public void cancelarAdocao(String id) {
+        Validator.validarId(id);
         Adocao adocao = buscarAdocaoPorId(id);
 
         if (adocao.getStatusAdocao() == StatusAdocao.CANCELADA) {
@@ -102,6 +103,7 @@ public class AdocaoService {
     }
 
     public void removerAdocao(String id) {
+        Validator.validarId(id);
         Adocao adocao = buscarAdocaoPorId(id);
 
         if (adocao.getStatusAdocao() == StatusAdocao.APROVADA) {
@@ -112,7 +114,7 @@ public class AdocaoService {
     }
 
     public List<Adocao> listarPorAnimal(String animalId) {
-        Validator.validarString(animalId, "ID do animal");
+        Validator.validarId(animalId);
 
         Animal animal = animalRepository.buscarPorId(animalId);
         AnimalValidator.validarAnimalEncontrado(animal);
@@ -121,6 +123,7 @@ public class AdocaoService {
     }
 
     public List<Adocao> listarPorAdotante(String adotanteId) {
+        Validator.validarId(adotanteId);
         Validator.validarString(adotanteId, "ID do adotante");
 
         Adotante adotante = adotanteRepository.buscarPorId(adotanteId);

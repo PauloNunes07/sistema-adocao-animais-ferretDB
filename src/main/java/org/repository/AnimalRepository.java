@@ -1,7 +1,6 @@
 package org.repository;
 
 import com.mongodb.client.model.Filters;
-import org.model.Adocao;
 import org.model.Animal;
 import org.util.enums.StatusAnimal;
 
