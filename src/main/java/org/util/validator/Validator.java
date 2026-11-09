@@ -14,6 +14,7 @@ public class Validator {
     }
 
     public static void validarString(String texto, String campo) {
+
         if (texto == null) {
             throw new CampoInvalidoException("O campo " + campo + " é obrigatório.");
         }

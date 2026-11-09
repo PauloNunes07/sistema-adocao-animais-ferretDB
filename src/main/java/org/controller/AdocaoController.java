@@ -32,12 +32,30 @@ public class AdocaoController {
         }
     }
 
+    public List<Adocao> listarPorAnimal(String animalId) {
+        try {
+            return adocaoService.listarPorAnimal(animalId);
+        } catch (Exception e) {
+            GlobalExceptionHandler.tratar(e);
+            return List.of();
+        }
+    }
+
     public Adocao buscarAdocaoPorId(String id) {
         try {
             return adocaoService.buscarAdocaoPorId(id);
         } catch (Exception e) {
             GlobalExceptionHandler.tratar(e);
             return null;
+        }
+    }
+
+    public List<Adocao> listarPorAdotante(String adotanteId) {
+        try {
+            return adocaoService.listarPorAdotante(adotanteId);
+        } catch (Exception e) {
+            GlobalExceptionHandler.tratar(e);
+            return List.of();
         }
     }
 

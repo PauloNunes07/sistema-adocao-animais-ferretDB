@@ -1,5 +1,5 @@
 package org.util.enums;
 
-public enum git sStatusAdocao {
+public enum StatusAdocao {
     PENDENTE, APROVADA, CANCELADA
 }

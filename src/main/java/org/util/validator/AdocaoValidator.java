@@ -4,12 +4,10 @@ import org.exception.CampoInvalidoException;
 import org.model.Adocao;
 import org.model.Animal;
 import org.repository.AdocaoRepository;
-import org.repository.AdotanteRepository;
 import org.repository.AnimalRepository;
 import org.util.enums.StatusAdocao;
 import org.util.enums.StatusAnimal;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class AdocaoValidator extends Validator {

@@ -110,4 +110,25 @@ public class AdocaoService {
 
         adocaoRepository.remover(id);
     }
+
+    public List<Adocao> listarPorAnimal(String animalId) {
+        Validator.validarString(animalId, "ID do animal");
+
+        Animal animal = animalRepository.buscarPorId(animalId);
+        AnimalValidator.validarAnimalEncontrado(animal);
+
+        return adocaoRepository.listarPorAnimal(animalId);
+    }
+
+    public List<Adocao> listarPorAdotante(String adotanteId) {
+        Validator.validarString(adotanteId, "ID do adotante");
+
+        Adotante adotante = adotanteRepository.buscarPorId(adotanteId);
+        AdotanteValidator.validarAdotanteEncontrado(adotante);
+
+        return adocaoRepository.listarPorAdotante(adotanteId);
+    }
+
+
+
 }

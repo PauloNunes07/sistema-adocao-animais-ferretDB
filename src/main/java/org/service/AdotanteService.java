@@ -38,7 +38,7 @@ public class AdotanteService {
     public Adotante buscarAdotantePorNome(String nome) {
         Validator.validarApenasLetras(nome, "nome");
 
-        Adotante adotante = adotanteRepository.buscarPorNome(nome);
+        Adotante adotante = adotanteRepository.buscarPorNome(nome.trim());
         AdotanteValidator.validarAdotanteEncontrado(adotante);
 
         return adotante;
