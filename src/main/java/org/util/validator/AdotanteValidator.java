@@ -1,7 +1,9 @@
 package org.util.validator;
 
 import org.exception.CampoInvalidoException;
+import org.model.Adotante;
 import org.model.Contato;
+import org.repository.AdotanteRepository;
 
 import java.util.regex.Pattern;
 
@@ -55,6 +57,18 @@ public class AdotanteValidator extends Validator {
        validarObjeto(contato, "Contato");
        validarEmail(contato.getEmail());
        validarTelefone(contato.getTelefone());
+    }
+
+    public static void validarAdotanteExistente(String id, AdotanteRepository adotanteRepository) {
+        if (adotanteRepository.buscarPorId(id) == null) {
+            throw new CampoInvalidoException("Adotante não encontrado.");
+        }
+    }
+
+    public static void validarAdotanteEncontrado(Adotante adotante) {
+        if (adotante == null) {
+            throw new RuntimeException("Adotante não encontrado!");
+        }
     }
 
 

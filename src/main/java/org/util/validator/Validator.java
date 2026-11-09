@@ -22,5 +22,17 @@ public class Validator {
         }
     }
 
+    public static void validarApenasLetras(String texto, String campo) {
+        validarString(texto, campo);
+
+        if (!texto.matches("^[\\p{L}]+(?:\\s+[\\p{L}]+)*$")) {
+            throw new CampoInvalidoException("O campo " + campo + " deve conter apenas letras");
+        }
+
+        if (texto.length() < 2) {
+            throw new CampoInvalidoException("O campo " + campo + " deve possuir pelo menos 2 caracteres");
+        }
+    }
+
 
 }

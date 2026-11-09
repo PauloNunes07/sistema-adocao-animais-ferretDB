@@ -1,6 +1,7 @@
 package org.repository;
 
 import com.mongodb.client.model.Filters;
+import org.model.Adocao;
 import org.model.Animal;
 import org.util.enums.StatusAnimal;
 
@@ -20,4 +21,5 @@ public class AnimalRepository extends BaseRepository<Animal> {
     public List<Animal> listarPorStatus(StatusAnimal statusAnimal) {
         return colecao.find(Filters.eq("statusAnimal", statusAnimal)).into(new ArrayList<>());
     }
+
 }

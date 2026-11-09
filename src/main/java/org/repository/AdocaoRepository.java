@@ -24,4 +24,9 @@ public class AdocaoRepository extends BaseRepository<Adocao>{
     public Adocao buscarPorAnimal(String animalId) {
         return colecao.find(Filters.eq("animalId", animalId)).first();
     }
+
+    public List<Adocao> listarPorAnimal(String animalId) {
+        return colecao.find(Filters.eq("animalId", animalId))
+                .into(new ArrayList<>());
+    }
 }

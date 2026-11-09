@@ -6,7 +6,10 @@ public class Contato {
     private String endereco;
 
 
-    public Contato(){}
+    public Contato(){
+
+    }
+
     public Contato(String email, String telefone, String endereco) {
         this.email = email;
         this.telefone = telefone;

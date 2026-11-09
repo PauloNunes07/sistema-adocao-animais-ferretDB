@@ -11,7 +11,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 public class ConfiguracaoFerretDB {
 
     private static final String URI =
-            "mongodb://ferretdb:ferretdb@localhost:27017/";
+            "mongodb://ferretuser:FerretDB_2026_Senha@localhost:27017/";
 
     private static final String nomeBanco = "adocao_animais";
 
